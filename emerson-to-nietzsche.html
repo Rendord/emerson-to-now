@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Emerson to Nietzsche to now</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="viz-root">
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>From Emerson to Nietzsche, from Nietzsche to now</h1>
+      <p class="lede">How an optimistic New England essayist fed a German philosopher with a hammer, and how we still live with what followed. Hover or tab to any box for details.</p>
+    </div>
+    <button class="theme" id="themeBtn" type="button">Toggle dark mode</button>
+  </header>
+
+  <section class="card" id="nietzsche">
+    <h2>4 · From Emerson to Nietzsche, from Nietzsche to the modern day</h2>
+    <p class="sub">Emerson was one of five sources Nietzsche drew on. Nietzsche never wore the existentialist label, but he became the forefather of existentialism, depth psychology and postmodernism, was hijacked by fascism and later rescued. The 21st century still lives in the rubble of his “wrecking ball”, and Rorty and Han offer two ways forward. <a href="index.html">See all five charts</a>.</p>
+    <div class="legend">
+      <span><i class="sw" style="background:var(--america)"></i>America</span>
+      <span><i class="sw" style="background:var(--europe)"></i>Europe</span>
+      <span><i class="sw" style="background:var(--global)"></i>21st century</span>
+      <span><i class="sw-box" style="border-style:dashed"></i>Misreading</span>
+      <span><i class="sw-box" style="border-style:dashed;border-left:3px solid var(--america)"></i>Emerson link</span>
+      <span><i class="sw-box" style="background:var(--chip);border-radius:999px"></i>Event</span>
+      <span><i class="sw-line"></i>leads to</span>
+      <span><i class="sw-line dash"></i>reaction against</span>
+    </div>
+    <div class="scroller" data-flow="nietzsche" role="img" aria-label="Flowchart from Emerson and Nietzsche's other sources, through Nietzsche, to the 20th century and today"></div>
+    <details class="outline"><summary>Text outline</summary><div data-outline="nietzsche"></div></details>
+  </section>
+
+  <footer>Dates are approximate where movements had no single start. Quotes are the authors’ own wording unless noted.</footer>
+</div>
+<div id="tip" role="tooltip"></div>
+</div>
+
+<script src="geom.js"></script>
+<script src="data/nietzsche.js"></script>
+<script src="flow.js"></script>
+</body>
+</html>

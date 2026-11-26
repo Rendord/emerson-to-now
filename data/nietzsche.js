@@ -1,0 +1,101 @@
+// Chart data: coordinates are in the chart's design space (px).
+(function (root) {
+  const FLOW = root.FLOW = root.FLOW || {};
+  // ---------- From Emerson to Nietzsche, from Nietzsche to now ----------
+  // Five columns with 60px gutters: sources | Nietzsche | 20th century | 21st century | ways forward.
+  const C = { src: 20, nie: 300, c20: 620, c21: 960, fwd: 1280 };
+  const nietzsche = {
+    id: 'nietzsche', width: 1600, height: 720,
+    backdrop: {
+      rects: [
+        { x: 10, y: 42, w: 240, h: 668, cls: 'lane-bg' },
+        { x: 290, y: 42, w: 280, h: 668, cls: 'lane-bg' },
+        { x: 610, y: 42, w: 300, h: 668, cls: 'lane-bg' },
+        { x: 950, y: 42, w: 280, h: 668, cls: 'global-bg' },
+        { x: 1270, y: 42, w: 320, h: 668, cls: 'lane-bg' },
+      ],
+      texts: [
+        { x: 130, y: 28, t: 'What fed him', cls: 'col-head' },
+        { x: 430, y: 28, t: 'Nietzsche (1844–1900)', cls: 'col-head' },
+        { x: 760, y: 28, t: 'What followed · 20th century', cls: 'col-head' },
+        { x: 1090, y: 28, t: 'Living in the rubble · 21st century', cls: 'col-head' },
+        { x: 1430, y: 28, t: 'Two ways forward', cls: 'col-head' },
+      ],
+    },
+    nodes: [
+      { id: 'emer', kind: 'america', x: C.src, y: 54, w: 220, h: 122, badge: 'From America', title: 'Emerson', sub: 'Read from age 17 (1862); annotated the <em>Essays</em> all his life',
+        detail: '<p>Nietzsche’s 1881 notebook: he had never felt so at home in a book. In <em>Twilight of the Idols</em> (1888) he calls Emerson subtler and, above all, happier than Carlyle.</p><p>He took the radical core: “imitation is suicide”, trust yourself against the herd. He dropped Emerson’s optimism and the divine Over-Soul.</p>' },
+      { id: 'scho', kind: 'europe', x: C.src, y: 190, w: 220, h: 104, title: 'Schopenhauer', sub: '<em>The World as Will and Representation</em> (1818), found in 1865',
+        detail: '<p>The world is driven by a blind, irrational Will that causes endless suffering; the wise deny it.</p><p>Nietzsche kept the irrational world but reversed the verdict: say yes to life, suffering included (<em>amor fati</em>).</p>' },
+      { id: 'greek', kind: 'europe', x: C.src, y: 308, w: 220, h: 104, title: 'The ancient Greeks', sub: 'Professor of classical philology at 24',
+        detail: '<p>Apollo (order, reason, measure) versus Dionysus (ecstasy, chaos, creativity). Since Socrates, he argued, the West had leaned too far toward cold reason.</p>' },
+      { id: 'wag', kind: 'europe', x: C.src, y: 426, w: 220, h: 104, title: 'Richard Wagner', sub: 'Friend and idol from 1868, then a bitter break',
+        detail: '<p>Nietzsche hoped Wagner’s mythic operas would revive tragic, Dionysian culture. He broke away as Wagner turned nationalist and Christian (<em>Parsifal</em>); <em>The Case of Wagner</em> (1888).</p>' },
+      { id: 'darw', kind: 'europe', x: C.src, y: 544, w: 220, h: 104, title: 'Darwin', sub: '<em>On the Origin of Species</em> (1859)',
+        detail: '<p>Nature is amoral and driven by struggle. Nietzsche argued with Darwinism: life wants not just to survive but to grow and expand, the will to power.</p>' },
+
+      { id: 'sect', kind: 'callout', x: C.nie, y: 54, w: 260, h: 122, badge: 'Emerson’s prophecy', title: 'A founder of a sect', quote: 'He who is really of their class will not be called by their name, but will be his own man, and in his turn the founder of a sect.',
+        detail: '<p>From <em>Self-Reliance</em> (1841). To truly belong with the great (Socrates, Luther, Galileo) you must not wear their name; being wholly your own man makes you a founder in turn.</p><p>Nietzsche fits: he wanted no disciples, refused every label, and still founded whole movements.</p>' },
+      { id: 'bt', kind: 'europe', x: C.nie, y: 190, w: 260, h: 80, title: '<em>The Birth of Tragedy</em>', sub: '1872 · Apollo vs Dionysus, dedicated to Wagner',
+        detail: '<p>His first book, Schopenhauerian and Wagnerian: Greek tragedy fused order and frenzy; Socratic rationalism killed it.</p>' },
+      { id: 'gs', kind: 'europe', x: C.nie, y: 286, w: 260, h: 100, title: '<em>The Gay Science</em>', sub: '1882 · “God is dead”: a warning, not a cheer. Opens with an Emerson epigraph',
+        detail: '<p>Without God, the foundations of morality, truth and meaning fall away: the threat of nihilism.</p>' },
+      { id: 'za', kind: 'europe', x: C.nie, y: 402, w: 260, h: 90, title: '<em>Thus Spoke Zarathustra</em>', sub: '1883–85 · the Übermensch vs the herd',
+        detail: '<p>Someone strong enough to face a meaningless universe and create their own values. “Become who you are.”</p>' },
+      { id: 'gen', kind: 'europe', x: C.nie, y: 508, w: 260, h: 100, title: 'Will to power & perspectivism', sub: '<em>Beyond Good and Evil</em> (1886), <em>Genealogy of Morals</em> (1887)',
+        detail: '<p>Moral values have a history and serve interests. “There are no facts, only interpretations” comes from his unpublished notebooks of the same years.</p>' },
+      { id: 'col', kind: 'event', x: C.nie, y: 626, w: 260, h: 64, title: 'Collapse in 1889', sub: 'his sister controls the archive',
+        detail: '<p>Nietzsche suffers a mental collapse in Turin in January 1889 and never recovers; he dies in 1900. His sister Elisabeth takes charge of his papers.</p>' },
+
+      { id: 'psy', kind: 'europe', x: C.c20, y: 54, w: 280, h: 96, title: 'Depth psychology', sub: 'Freud, Jung: reason is thin ice over the unconscious',
+        detail: '<p>Nietzsche’s picture of drives beneath consciousness anticipated psychoanalysis; Freud acknowledged Nietzsche’s uncanny psychological insight.</p>' },
+      { id: 'exi', kind: 'europe', x: C.c20, y: 166, w: 280, h: 118, title: 'Existentialism', sub: 'Heidegger, Sartre, de Beauvoir, Camus · Nietzsche is its forefather, not a member',
+        detail: '<p>“God is dead” is their starting point: existence precedes essence, so you must create your own meaning.</p><p>Nietzsche lived half a century too early for the label, and put more weight on drives, health and biology than on Sartre’s radical freedom.</p>' },
+      { id: 'pom', kind: 'europe', x: C.c20, y: 300, w: 280, h: 108, title: 'Postmodernism', sub: 'Foucault, Derrida, Deleuze · genealogy and perspectivism radicalised',
+        detail: '<p>Foucault builds his method on Nietzsche’s genealogy to show how psychiatry, prisons and science use “truth” to exercise power.</p>' },
+      { id: 'mis', kind: 'opposed', x: C.c20, y: 440, w: 280, h: 118, badge: 'Misreading', title: 'Hijacked by fascism', sub: 'Elisabeth assembles <em>The Will to Power</em> (1901); Nazis and Mussolini claim the Übermensch',
+        detail: '<p>Nietzsche explicitly despised antisemitism and German nationalism. His antisemitic sister cut and arranged his notes to suit her politics.</p><p>20th-century answers to nihilism were vast ideologies trying to replace God by force.</p>' },
+      { id: 'reh', kind: 'america', x: C.c20, y: 590, w: 280, h: 100, title: 'Rescued', sub: 'Walter Kaufmann’s <em>Nietzsche</em> (1950) restores the real thinker',
+        detail: '<p>After WWII, Kaufmann, a German-born scholar at Princeton, and others separated Nietzsche from the Nazi myth.</p>' },
+
+      { id: 'pt', kind: 'global', x: C.c21, y: 54, w: 260, h: 132, title: 'Post-truth & echo chambers', sub: 'Perspectivism, digitised: algorithms give everyone their own reality',
+        detail: '<p>A lens, not a cause: Nietzsche meant interpretation as liberation from dogma. Online it has become fragmented truth, where the loudest narrative wins.</p>' },
+      { id: 'burn', kind: 'global', x: C.c21, y: 206, w: 260, h: 132, title: 'Self-optimisation & burnout', sub: 'The Übermensch turned personal brand: free, but exhausted and lonely',
+        detail: '<p>With church and close community gone, the task of being successful and unique rests on the individual alone.</p>' },
+      { id: 'lim', kind: 'global', x: C.c21, y: 358, w: 260, h: 132, title: 'Humans off the throne', sub: 'Climate crisis and AI expose the will to power’s limits; posthumanism seeks humility',
+        detail: '<p>Haraway, Braidotti and Morton try to see humans as part of an ecosystem and a technological network, not its rulers.</p>' },
+      { id: 'mng', kind: 'global', x: C.c21, y: 510, w: 260, h: 132, title: 'Managing nihilism', sub: 'No more grand narratives: consumerism, entertainment, distraction',
+        detail: '<p>Where the 20th century filled the void with ideologies, the 21st mostly manages it, balancing without an absolute foundation underfoot.</p>' },
+
+      { id: 'ror', kind: 'america', x: C.fwd, y: 54, w: 300, h: 168, badge: 'Talk together', title: 'Richard Rorty: the liberal ironist', sub: '<em>Contingency, Irony, and Solidarity</em> (1989) · no final truth, so reduce cruelty, build solidarity, keep the conversation going',
+        detail: '<p>Rorty (1931–2007) agrees with Nietzsche that there is no foundation outside us, and answers: so what? Truth is made together, through democracy, novels and empathy.</p><p>The American line: Emerson → James → Dewey → Rorty. Optimistic, pragmatic, social.</p>' },
+      { id: 'han', kind: 'europe', x: C.fwd, y: 246, w: 300, h: 168, badge: 'Stop doing', title: 'Byung-Chul Han: the burnout society', sub: '<em>The Burnout Society</em> (2010) · “you can” replaced “you must”; we exploit ourselves. Answer: <em>vita contemplativa</em>',
+        detail: '<p>Han (b. 1959) contrasts Foucault’s disciplinary society with today’s achievement society: we are victim and perpetrator at once.</p><p>His way out: boredom, slowness, deep attention instead of digital hyper-attention. <em>Vita Contemplativa</em> (2022).</p>' },
+      { id: 'vs', kind: 'note', x: C.fwd, y: 438, w: 300, h: 92, title: 'Rorty vs Han', sub: 'Roll up your sleeves, or put the phone down: the split in the 21st-century self',
+        detail: '<p>Rorty: optimistic, pragmatic, social. Han: critical, psychological, meditative.</p>' },
+      { id: 'circ', kind: 'callout', x: C.fwd, y: 552, w: 300, h: 138, badge: 'Full circle', title: 'Back to Emerson?', sub: 'Emerson: trust yourself, because the divine is in you. Nietzsche: because nothing is outside you. Today: free, but tired.',
+        detail: '<p>An open question from the conversation: could Emerson’s original optimism serve as an antidote to the darker edges of Nietzsche’s legacy?</p>' },
+    ],
+    edges: [
+      { from: 'emer', to: 'sect' },
+      { from: 'scho', to: 'bt', fromY: 222, toY: 210 },
+      { from: 'greek', to: 'bt', fromY: 350, toY: 232 },
+      { from: 'wag', to: 'bt', fromY: 470, toY: 254 },
+      { from: 'darw', to: 'gen', fromY: 576, toY: 576 },
+      { from: 'bt', to: 'gs' }, { from: 'gs', to: 'za' }, { from: 'za', to: 'gen' }, { from: 'gen', to: 'col' },
+      { from: 'bt', to: 'psy', fromY: 220, toY: 110 },
+      { from: 'gs', to: 'exi', fromY: 326, toY: 240 },
+      { from: 'gen', to: 'pom', fromY: 540, toY: 370 },
+      { from: 'col', to: 'mis', fromY: 660, toY: 520 },
+      { from: 'mis', to: 'reh' },
+      { from: 'pom', to: 'pt', fromY: 320, toY: 150 },
+      { from: 'exi', to: 'burn', fromY: 260, toY: 280 },
+      { from: 'pom', to: 'lim', fromY: 390, toY: 424 },
+      { from: 'mis', to: 'mng', type: 'reaction', fromY: 520, toY: 576 },
+      { from: 'pt', to: 'ror', fromY: 120, toY: 138 },
+      { from: 'burn', to: 'han', fromY: 280, toY: 330 },
+    ],
+    outlineExtra: 'Emerson, Schopenhauer, the Greeks, Wagner and Darwin feed into Nietzsche. His work branches into depth psychology, existentialism and postmodernism, is hijacked by fascism and later rescued. In the 21st century we live with the aftermath: post-truth, burnout, limits on human mastery and managed nihilism. Rorty and Han offer two ways forward, and the chart ends by asking whether Emerson’s optimism could be an antidote.',
+  };
+  FLOW.nietzsche = nietzsche;
+})(typeof window !== 'undefined' ? window : globalThis);
